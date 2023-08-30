@@ -42,5 +42,12 @@
                     </table>
             </div>
         </div>
+        <h1>Formulario Intento</h1>
+    	<form action="agregar.php" method="post">
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="nombre" required><br>
+
+            <input type="submit" value="Enviar">
+    	</form>
     </body>
 </html>
