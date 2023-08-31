@@ -47,6 +47,9 @@
             <label for="nombre">Nombre:</label>
             <input type="text" id="nombre" name="nombre" required><br>
 
+	    <label for="apellido">Apellido:</label>
+            <input type="text" id="apellido" name="apellido" required><br>
+
             <input type="submit" value="Enviar">
     	</form>
     </body>

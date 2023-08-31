@@ -4,7 +4,9 @@ $conn = mysqli_connect('db', 'root', 'test', "dbname");
 
 $nombre = $_POST['nombre'];
 
-$query = "INSERT INTO Person(id, name) VALUES (5, '$nombre')";
+$apellido = $_POST['apellido'];
+
+$query = "INSERT INTO Person(id, name, last_name) VALUES (5, '$nombre', '$apellido')";
 
 $result = mysqli_query($conn, $query);
 
