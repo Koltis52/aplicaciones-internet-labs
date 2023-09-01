@@ -28,7 +28,7 @@
                 </table>
         </div>
         <div class="row">
-            <form method="POST" action="#" >
+            <form method="POST" action="" >
               <div class="mb-3">
                 <label class="form-label">Nombre</label>
                 <input type="text" class="form-control" name="nombre">
@@ -37,9 +37,23 @@
                 <label class="form-label">Apellido</label>
                 <input type="test" class="form-control" name="apellido">
               </div>
-              <button type="submit" class="btn btn-primary">Agregar</button>
+              <button id="intento" type="submit" class="btn btn-primary">Agregar</button>
             </form>
         </div>
     </div>
+    <script>
+        document.getElementById("intento").addEventListener("click", intento_funcion);
+        
+        function intento_funcion() {
+            //alert("Hello World!");
+            var elem = document.getElementsByTagName("tbody")
+            //elem.write("<td>1</td>" + "<td>" + $_POST('nombre')+ "</td>" + "<td>" + $_POST('apellido') + "</td>");
+            /*var lista_nombres = document.getElementsByTagName("tbody");
+            for(var elem of lista_nombres) {
+                document.write(elem.innerHTML + "<br>");
+            }*/
+            
+        }
+    </script>
 </body>
 </html>
