@@ -10,7 +10,7 @@
     <div class="container">
         <div class="row">
             <h1>Aplicaciones de Internet</h1>
-            <table class="table table-striped">
+            <table id="tabla" class="table table-striped">
                 <thead>
                     <tr>
                         <th>id</th>
@@ -28,14 +28,14 @@
                 </table>
         </div>
         <div class="row">
-            <form method="POST" action="" >
+            <form id="form" method="POST" action="localhost:8080" >
               <div class="mb-3">
                 <label class="form-label">Nombre</label>
-                <input type="text" class="form-control" name="nombre">
+                <input id="nombre" type="text" class="form-control" name="nombre">
               </div>
               <div class="mb-3">
                 <label class="form-label">Apellido</label>
-                <input type="test" class="form-control" name="apellido">
+                <input id="apellido" type="test" class="form-control" name="apellido">
               </div>
               <button id="intento" type="submit" class="btn btn-primary">Agregar</button>
             </form>
@@ -44,10 +44,19 @@
     <script>
         document.getElementById("intento").addEventListener("click", intento_funcion);
         
+        var x = 2;
+        
         function intento_funcion() {
             //alert("Hello World!");
-            var elem = document.getElementsByTagName("tbody")
-            //elem.write("<td>1</td>" + "<td>" + $_POST('nombre')+ "</td>" + "<td>" + $_POST('apellido') + "</td>");
+            var lista_nombres = document.getElementById("tabla");
+            var nuevo_nombre = lista_nombres.insertRow(-1);
+            var informacion1 = nuevo_nombre.insertCell(0);
+            var informacion2 = nuevo_nombre.insertCell(1);
+            var informacion3 = nuevo_nombre.insertCell(2);
+            informacion1.innerHTML = x;
+            informacion2.innerHTML = document.getElementById("nombre").value;
+            informacion3.innerHTML = document.getElementById("apellido").value;
+            x++;
             /*var lista_nombres = document.getElementsByTagName("tbody");
             for(var elem of lista_nombres) {
                 document.write(elem.innerHTML + "<br>");
