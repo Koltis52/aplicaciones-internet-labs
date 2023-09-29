@@ -42,16 +42,28 @@
                 </tbody>
             </table>
         </div>
-        <button id="aboutbtn"> Click Me - I'm Javascript on Speed</button>
+        <button id="about-btn"> Click Me - I'm Javascript on Speed</button>
         
-        <p>This is a example</p>
-        
-        <p>This is another example</p>
+        <p id="xd">This is a example</p>
     </div>
     <script>
         $(document).ready( function() {
-            $("#aboutbtn").on("click", function() {
-                alert("You clicked the button using JQuery!");
+            function crearLista(response) {
+                alert(response);
+            };
+            function muestraError() {
+                alert("Error xd");
+            };
+            $("#about-btn").on("click", function() {
+                //alert("You clicked the button using JQuery!");
+                $.ajax({
+                    urls: "http://api.filmon.com/api/vod/genres",
+                    type: "GET",
+                    async: true,
+                    dataType: "json",
+                    success: crearLista,
+                    error: muestraError
+                });
             });
         });
     </script>
