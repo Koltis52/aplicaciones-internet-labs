@@ -19,7 +19,8 @@
             <h3>Movies</h3>
             <form action="">
                 <select name="genres" id="genres" >
-                        <option value=""></option>
+                        <option value="2015">Sports</option>
+                        <option value="2015">Action</option>
                 </select>
             </form>
             <table class="table table-striped">
@@ -41,6 +42,18 @@
                 </tbody>
             </table>
         </div>
+        <button id="aboutbtn"> Click Me - I'm Javascript on Speed</button>
+        
+        <p>This is a example</p>
+        
+        <p>This is another example</p>
     </div>
+    <script>
+        $(document).ready(function() {
+            $("#aboutbtn").on("click", function(event) {
+                alert("You clicked the button using JQuery!");
+            });
+        });
+    </script>
 </body>
 </html>
