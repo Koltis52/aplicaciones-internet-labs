@@ -10,4 +10,4 @@ class Alumnos(models.Model):
 class Asignaturas(models.Model):
     nombre = models.CharField(max_length=30)
     codigo = models.IntegerField()
-    alumnos = models.ManyToManyField(Alumnos)
+    alumnos = models.ManyToManyField(Alumnos,blank=True, null=True)
