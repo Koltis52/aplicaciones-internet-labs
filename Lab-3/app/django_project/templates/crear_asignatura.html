@@ -15,16 +15,10 @@
             <h3>Crear Asignatura</h3>
         </div>
         <div class="row">
-            <form id="form" method="POST" action="guardar asignatura/">
-                <div class="mb-3">
-                    <label class="form-label">Nombre Asignatura</label>
-                    <input id="nombre_asignatura" type="text" class="form-control" name="nombre_asignatura">
-                </div>
-                <div class="mb-3">
-                    <label class="form-label">Codigo Asignatura</label>
-                    <input id="codigo_asignatura" type="text" class="form-control" name="codigo_asignatura">
-                </div>
-                <button id="agregar_asignatura" type="submit" class="btn btn-primary">Agregar Asignatura</button>
+            <form method="POST" action="guardar_asignatura/">
+                {% csrf_token %}
+                {{ form }}
+                <input type="submit" value="Submit">
             </form>
         </div>
     </div>
