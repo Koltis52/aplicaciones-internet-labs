@@ -7,3 +7,6 @@ def index(request):
 
 def crear_asignatura(request):
     return render(request, 'crear_asignatura.html')
+
+def agregar_asignatura(request):
+    return render(request, 'guardar_asignatura.py')

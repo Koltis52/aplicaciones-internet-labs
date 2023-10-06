@@ -12,7 +12,31 @@
         <div class="row">
             <img src="{% static 'images/userena.svg' %}" class="rounded" style="width:200px"/>
             <h1>Aplicaciones de Internet</h1>
+            <h3>Crear Asignatura</h3>
+        </div>
+        <div class="row">
+            <form id="form" method="POST" action="guardar asignatura/">
+                <div class="mb-3">
+                    <label class="form-label">Nombre Asignatura</label>
+                    <input id="nombre_asignatura" type="text" class="form-control" name="nombre_asignatura">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Codigo Asignatura</label>
+                    <input id="codigo_asignatura" type="text" class="form-control" name="codigo_asignatura">
+                </div>
+                <button id="agregar_asignatura" type="submit" class="btn btn-primary">Agregar Asignatura</button>
+            </form>
         </div>
     </div>
+    <script>
+        /*document.getElementById("agregar_asignatura").addEventListener("click", agregar_asignatura_funcion);
+
+        function agregar_asignatura_funcion() {
+            var nombre_asignatura = document.getElementById("nombre_asignatura");
+            var codigo_asignatura = parseInt(document.getElementById("codigo_asignatura"));
+            asignatura_a_guardar = Asignaturas(nombre="nombre_asignatura", codigo="codigo_asignatura");
+            asignatura_a_guardar.save();
+        }*/
+    </script>
 </body>
 </html>
