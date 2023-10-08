@@ -30,32 +30,10 @@
                     </tr>
                 </tbody>
             </table>
-            <button onclick="intento()">Intento!</button>
+            <button onclick="window.location.href='random/';">Intento!</button>
             <h3 id="xd"></h3>
             <h3 id="xd2"></h3>
         </div>
     </div>
-    <script>
-        const data = null;
-
-        function intento() {
-            const xhr = new XMLHttpRequest();
-            xhr.withCredentials = true;
-
-            xhr.addEventListener('readystatechange', function () {
-	            if (this.readyState === this.DONE) {
-		            console.log(this.responseText);
-                    document.getElementById("xd").innerHTML = this.readyState;
-                    document.getElementById("xd2").innerHTML = this.responseText;
-	            }
-            });
-
-            xhr.open('GET', 'https://moviesdatabase.p.rapidapi.com/titles/random?list=most_pop_movies');
-            xhr.setRequestHeader('X-RapidAPI-Key', '6ab30a3e29msh99f48e91eab357cp14a8e5jsnedab8a8b1c24');
-            xhr.setRequestHeader('X-RapidAPI-Host', 'moviesdatabase.p.rapidapi.com');
-
-            xhr.send(data);
-        }
-    </script>
 </body>
 </html>
