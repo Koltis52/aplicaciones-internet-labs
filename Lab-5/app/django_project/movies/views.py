@@ -2,4 +2,10 @@ from django.shortcuts import render
 import requests
 
 def index(request):
-    return render(request, 'index.html')
+    url = "http://api.filmon.com/api/vod/genres"
+
+    response = requests.get(url)
+
+    datas = response.json
+
+    return render(request, 'index.html', {'datas':datas})

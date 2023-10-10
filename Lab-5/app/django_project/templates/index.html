@@ -18,9 +18,10 @@
             <h1>Aplicaciones de Internet</h1>
             <h3>Movies</h3>
             <form action="">
-                <select name="genres" id="genres" >
-                        <option value="2015">Sports</option>
-                        <option value="2015">Action</option>
+                <select name="genres" id="genres">
+                    {% for response in datas.response %}
+                        <option value="2015">{{ response.name }}</option>
+                    {% endfor %}
                 </select>
             </form>
             <table class="table table-striped">
@@ -49,7 +50,7 @@
     <script>
         $(document).ready( function() {
             function crearLista(response) {
-                alert(response);
+                alert("Bien xd");
             };
             function muestraError() {
                 alert("Error xd");
@@ -57,8 +58,8 @@
             $("#about-btn").on("click", function() {
                 //alert("You clicked the button using JQuery!");
                 $.ajax({
-                    urls: "http://api.filmon.com/api/vod/genres",
-                    type: "GET",
+                    url: 'http://api.filmon.com/api/vod/search?genre=sports',
+                    type: 'GET',
                     async: true,
                     dataType: "json",
                     success: crearLista,
