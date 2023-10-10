@@ -10,11 +10,15 @@ def index(request):
 def peticion_random(request):
     url = "https://moviesdatabase.p.rapidapi.com/titles/random"
 
+    querystring = {"list":"top_rated_series_250"}
+
     headers = {
 	    "X-RapidAPI-Key": "6ab30a3e29msh99f48e91eab357cp14a8e5jsnedab8a8b1c24",
 	    "X-RapidAPI-Host": "moviesdatabase.p.rapidapi.com"
     }
 
-    response = requests.get(url, headers=headers)
+    response = requests.get(url, headers=headers, params=querystring)
 
-    return HttpResponse(response)
+    datas = response.json
+
+    return render(request, 'index.html', {'datas':datas})

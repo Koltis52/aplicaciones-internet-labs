@@ -12,27 +12,28 @@
         <div class="row">
             <img src="{% static 'images/userena.svg' %}" class="rounded" style="width:200px"/>
             <h1>Aplicaciones de Internet</h1>
-            <h3>Asignaturas</h3>
+            <h3>Peliculas</h3>
+            <button onclick="window.location.href='random/';">Mostrar 10 peliculas o series entre las 250 mejores valoradas</button>
             <table>
                 <thead>
                     <tr>
                         <td>Nombre</td>
-                        <td>Código</td>
-                        <td>Acción</td>
+                        <td>Tipo</td>
+                        <td>Imagen</td>
+                        <td>Año de salida</td>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                    {% for course in courses %}                   
-                        <td>{{ course.name }}</td>
-                        <td>{{ course.code }}</td>
+                    {% for result in datas.results %}
+                    <tr>              
+                        <td>{{ result.titleText.text }}</td>
+                        <td>{{ result.titleType.text }}</td>
+                        <td><img src={{result.primaryImage.url}} width="200" height="200"></td>
+                        <td>{{ result.releaseYear.year }}</td>
+                    </tr> 
                     {% endfor %}
-                    </tr>
                 </tbody>
             </table>
-            <button onclick="window.location.href='random/';">Intento!</button>
-            <h3 id="xd"></h3>
-            <h3 id="xd2"></h3>
         </div>
     </div>
 </body>
