@@ -18,55 +18,60 @@
             <h1>Aplicaciones de Internet</h1>
             <h3>Movies</h3>
             <form action="">
-                <select name="genres" id="genres">
+                <select name="genres" id="genres" onchange="obtener_peliculas()">
                     {% for response in datas.response %}
-                        <option value="2015">{{ response.name }}</option>
+                        <option value={{response.slug}}>{{ response.name }}</option>
                     {% endfor %}
                 </select>
             </form>
-            <table class="table table-striped">
+            <table class="table table-striped" id="lista_peliculas">
                 <thead class="thead-dark">
                     <tr>
                         <td>Nombre</td>
                         <td>Descripción</td>
                         <td>Imagen</td>
-                        <td>detalles</td>
                     </tr>
                 </thead>
-                <tbody>
-                        <tr>                   
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                </tbody>
+                <tbody id="peliculas"></tbody>
             </table>
         </div>
-        <button id="about-btn"> Click Me - I'm Javascript on Speed</button>
-        
-        <p id="xd">This is a example</p>
     </div>
     <script>
-        $(document).ready( function() {
-            function crearLista(response) {
-                alert("Bien xd");
-            };
-            function muestraError() {
-                alert("Error xd");
-            };
-            $("#about-btn").on("click", function() {
-                //alert("You clicked the button using JQuery!");
-                $.ajax({
-                    url: 'http://api.filmon.com/api/vod/search?genre=sports',
-                    type: 'GET',
-                    async: true,
-                    dataType: "json",
-                    success: crearLista,
-                    error: muestraError
-                });
+        function crearLista(response) {
+            $("#lista_peliculas tbody").empty();
+            var lista_peliculas = document.getElementById("peliculas");
+            response.response.forEach(element => {
+                var nueva_pelicula = lista_peliculas.insertRow(-1);
+                var informacion1 = nueva_pelicula.insertCell(0);
+                var informacion2 = nueva_pelicula.insertCell(1);
+                var informacion3 = nueva_pelicula.insertCell(2);
+
+                var img = document.createElement("img");
+                img.src = element.poster.url;
+                img.width = "200";
+                img.height = "200";
+
+                informacion1.innerHTML = element.title;
+                informacion2.innerHTML = element.description;
+                informacion3.appendChild(img);
             });
-        });
+        };
+        function muestraError() {
+            alert("Error xd");
+        };
+        function obtener_peliculas() {
+            var url_inicial = 'http://api.filmon.com/api/vod/search?genre=';
+            var genre = document.getElementById("genres").value;
+            var url_final = url_inicial.concat(genre);
+            $.ajax({
+                url: url_final,
+                type: 'GET',
+                async: true,
+                dataType: "json",
+                success: crearLista,
+                error: muestraError
+            });
+        };
     </script>
 </body>
 </html>
