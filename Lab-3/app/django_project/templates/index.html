@@ -29,11 +29,21 @@
                         <td>{{ asignatura.nombre }}</td>
                         <td>{{ asignatura.codigo }}</td>
                         <td>{{ asignatura.alumnos.count }}</td>
-                        <td><button onclick="location.href='/eliminar asignatura/';">Eliminar Asignatura</button></td>
+                        <td><button value={{asignatura.nombre}} onclick="eliminar_asignatura(this.value)">Eliminar Asignatura</button></td>
                     </tr>
                     {% endfor %}
                 </tbody>
          </table>
     </div>
+    <script>
+        function eliminar_asignatura(nombre_asignatura) {
+            fetch("/eliminar asignatura/", {
+                method: 'POST',
+                body: {
+                    nombre_asignatura
+                }
+            })
+        }
+    </script>
 </body>
 </html>
