@@ -15,9 +15,13 @@
             <h3>Crear Asignatura</h3>
         </div>
         <div class="row">
-            <form method="POST" action="guardar_asignatura/">
+            <form method="POST" action="/crear asignatura/">
                 {% csrf_token %}
-                {{ form }}
+                <div>Nombre Asignatura:</div>
+                {{ form.nombre_asignatura }}
+                <div>Codigo Asignatura:</div>
+                {{ form.codigo_asignatura }}
+                <div></div>
                 <input type="submit" value="Submit">
             </form>
         </div>

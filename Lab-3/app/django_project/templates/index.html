@@ -13,7 +13,7 @@
             <img src="{% static 'images/userena.svg' %}" class="rounded" style="width:200px"/>
             <h1>Aplicaciones de Internet</h1>
         </div>
-        <button onclick="window.location.href='crear asignatura/';">Crear Asignaturas!</button>
+        <button onclick="location.href='/crear asignatura/';">Crear Asignaturas!</button>
         <table id="tabla" class="table table-striped">
                 <thead>
                     <tr>
@@ -24,14 +24,14 @@
                     </tr>
                 </thead>
                 <tbody>
+                    {% for asignatura in asignaturas %}
                     <tr>
-                        {% for asignatura in asignaturas %}
-                            <td>{{ asignatura.nombre }}</td>
-                            <td>{{ asignatura.codigo }}</td>
-                            <td>{{ asignatura.alumnos }}</td>
-                            <td><button>Nose xd!</button></td>
-                        {% endfor %}
+                        <td>{{ asignatura.nombre }}</td>
+                        <td>{{ asignatura.codigo }}</td>
+                        <td>{{ asignatura.alumnos.count }}</td>
+                        <td><button onclick="location.href='/eliminar asignatura/';">Eliminar Asignatura</button></td>
                     </tr>
+                    {% endfor %}
                 </tbody>
          </table>
     </div>
