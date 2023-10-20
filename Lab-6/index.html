@@ -6,13 +6,17 @@
 <title>Movies</title>
 <link rel="stylesheet" href="css/bootstrap.css"/>
 </head>
-<body ng-app="sampleApp">
+<body ng-app="sampleApp" ng-controller="myCtrl">
 
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
 <script src="lib/bootstrap.js"></script>
 
 <h1> Movies</h1>
+<form action="">
+    <select name="genres" id="genres" ng-options="generos.name for option in generos">
+    </select>
+</form>
 <table class="table table-striped">
 <thead>
 <tr> <th>#</th><th>Ejemplo</th><th>Description</th><th></th> </tr> </thead>
@@ -49,6 +53,17 @@ sampleApp.controller('AngularController',function($scope,$routeParams) {
 
 $scope.movieid=$routeParams.MovieId
 
+});
+
+sampleApp.controller('myCtrl', function($scope, $http) {
+    $http({
+        method: 'GET',
+        url: 'http://api.filmon.com/api/vod/genres'
+    }).then(function succesCallback(response) {
+        $scope.generos = response.data.response
+    }, function errorCallback(response) {
+        alert("Error xd");
+    });
 });
 </script>
 </body>
