@@ -14,7 +14,7 @@
 
 <h1> Movies</h1>
 <form action="">
-    <select name="genres" id="genres" ng-options="generos.name for option in generos">
+    <select name="genres" id="genres" ng-model="selectGeneros" ng-options="generos.name for generos in generos">
     </select>
 </form>
 <table class="table table-striped">
