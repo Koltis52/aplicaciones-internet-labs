@@ -39,16 +39,16 @@
         var csrfToken = '{{ csrf_token }}';
 
         function eliminar_asignatura(nombre_asignatura) {
-            fetch("/eliminar asignatura/", {
-                method: 'POST',
-                body: {
-                    nombre_asignatura
-                },
-                headers: {
-                    "X-CSRFToken": csrfToken
-                },
-                credentials: "include"
-            })
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "/eliminar asignatura/", true);
+            xhr.setRequestHeader("Content-Type", "application/json");
+            xhr.setRequestHeader("X-CSRFToken", csrfToken);
+            xhr.send(JSON.stringify(nombre_asignatura));
+            xhr.onreadystatechange = function() {
+                if(xhr.readyState == 4) {
+                    location.href = "/asignatura eliminada/"
+                }
+            }
         }
     </script>
 </body>

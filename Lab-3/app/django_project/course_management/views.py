@@ -1,7 +1,8 @@
+import json
 from django.shortcuts import render
 from .models import Asignaturas, Alumnos
 from .forms import AsignaturaForm
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse
 
 def index(request):
     asignaturas = Asignaturas.objects.all()
@@ -19,5 +20,9 @@ def crear_asignatura(request):
     return render(request, 'crear_asignatura.html',{'form': form})
 
 def eliminar_asignatura(request):
-    Asignaturas.objects.filter(nombre=request.POST.get('nombre_asignatura', False)).delete()
-    return HttpResponseRedirect("http://localhost:8080/")
+    body_data = json.loads(request.body)
+    Asignaturas.objects.filter(nombre=body_data).delete()
+    return True
+
+def asignatura_eliminada(request):
+    return render(request, 'asignatura_eliminada.html')
