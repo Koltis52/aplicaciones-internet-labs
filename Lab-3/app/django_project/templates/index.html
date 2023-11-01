@@ -15,6 +15,7 @@
         </div>
         <button onclick="location.href='/crear asignatura/';">Crear Asignaturas!</button>
         <button onclick="location.href='/crear alumnos/';">Crear Alumnos!</button>
+        <button onclick="location.href='/modificar alumnos/';">Modificar Alumnos!</button>
         <button onclick="location.href='/eliminar alumno/';">Eliminar Alumno!</button>
         <table id="tabla" class="table table-striped">
                 <thead>
@@ -32,6 +33,7 @@
                         <td>{{ asignatura.codigo }}</td>
                         <td>{{ asignatura.alumnos.count }}</td>
                         <td><button value={{asignatura.nombre}} onclick="agregar_alumnos(this.value)">Agregar Alumnos</button></td>
+                        <td><button value={{asignatura.nombre}} onclick="quitar_alumnos(this.value)">Quitar Alumnos</button></td>
                         <td><button value={{asignatura.nombre}} onclick="modificar_asignatura(this.value)">Modificar Asignatura</button></td>
                         <td><button value={{asignatura.nombre}} onclick="eliminar_asignatura(this.value)">Eliminar Asignatura</button></td>
                     </tr>
@@ -47,6 +49,10 @@
             window.location.href = `${url}${nombre_asignatura}`;
         }
 
+        function quitar_alumnos(nombre_asignatura) {
+            const url = 'Http://localhost:8080/quitar alumnos/';
+            window.location.href = `${url}${nombre_asignatura}`;
+        }
 
         function modificar_asignatura(nombre_asignatura) {
             const url = 'Http://localhost:8080/modificar asignatura/';

@@ -1,0 +1,48 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+        <title>Aplicaciones de Internet</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href='{% static "css/bootstrap.min.css" %}' type="text/css" />
+        <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+    </head>
+<body>
+    <div class="container">
+        <div class="row">
+            <img src="{% static 'images/userena.svg' %}" class="rounded" style="width:200px"/>
+            <h1>Aplicaciones de Internet</h1>
+            <h3>Modificar Alumnos</h3>
+        </div>
+        <button onclick="location.href='/';">Volver a menu principal</button>
+        <table id="tabla" class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Apellido Paterno</th>
+                    <th>Apellido Materno</th>
+                    <th>Fecha de Nacimiento</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for alumno in alumnos %}
+                <tr>
+                    <td>{{ alumno.nombre }}</td>
+                    <td>{{ alumno.apellido_paterno }}</td>
+                    <td>{{ alumno.apellido_materno }}</td>
+                    <td>{{ alumno.fecha_de_nacimiento }}</td>
+                    <td><button value={{alumno.nombre}} onclick="modificar_alumno(this.value)">Modificar Alumno</button></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+         </table>
+    </div>
+    <script>
+        function modificar_alumno(nombre_alumno) {
+            const url = 'Http://localhost:8080/modificar alumno/';
+            window.location.href = `${url}${nombre_alumno}`;
+        }
+    </script>
+</body>
+</html>
