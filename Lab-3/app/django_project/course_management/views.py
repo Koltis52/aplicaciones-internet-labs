@@ -2,7 +2,7 @@ import json
 from django.shortcuts import render
 from .models import Asignaturas, Alumnos
 from .forms import AsignaturaForm, AlumnoForm
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse
 
 def index(request):
     asignaturas = Asignaturas.objects.all()
@@ -55,3 +55,14 @@ def crear_alumnos(request):
     else:
         form = AlumnoForm()
     return render(request, 'crear_alumnos.html',{'form': form})
+
+def agregar_alumnos(request, nombre_a):
+    if request.method == "POST":
+        for element in request.POST.getlist('lista_alumnos'):
+            b = Alumnos.objects.get(nombre=element)
+            c = Asignaturas.objects.get(nombre=nombre_a)
+            c.alumnos.add(b)
+        return HttpResponseRedirect("http://localhost:8080/")
+    else:
+        alumnos = Alumnos.objects.all()
+    return render(request, 'agregar_alumnos.html', {'alumnos':alumnos})
