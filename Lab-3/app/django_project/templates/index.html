@@ -36,12 +36,18 @@
          </table>
     </div>
     <script>
+        var csrfToken = '{{ csrf_token }}';
+
         function eliminar_asignatura(nombre_asignatura) {
             fetch("/eliminar asignatura/", {
                 method: 'POST',
                 body: {
                     nombre_asignatura
-                }
+                },
+                headers: {
+                    "X-CSRFToken": csrfToken
+                },
+                credentials: "include"
             })
         }
     </script>

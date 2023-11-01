@@ -19,5 +19,5 @@ def crear_asignatura(request):
     return render(request, 'crear_asignatura.html',{'form': form})
 
 def eliminar_asignatura(request):
-    Asignaturas.objects.filter(nombre=request.POST["nombre_asignatura"]).delete()
+    Asignaturas.objects.filter(nombre=request.POST.get('nombre_asignatura', False)).delete()
     return HttpResponseRedirect("http://localhost:8080/")
