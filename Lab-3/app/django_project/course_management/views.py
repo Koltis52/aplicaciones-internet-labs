@@ -66,3 +66,12 @@ def agregar_alumnos(request, nombre_a):
     else:
         alumnos = Alumnos.objects.all()
     return render(request, 'agregar_alumnos.html', {'alumnos':alumnos})
+
+def eliminar_alumno(request):
+    if request.method == "POST":
+        body_data = json.loads(request.body)
+        Alumnos.objects.filter(nombre=body_data).delete()
+        return True
+    else:
+        alumnos = Alumnos.objects.all()
+    return render(request, 'eliminar_alumno.html', {'alumnos':alumnos})
