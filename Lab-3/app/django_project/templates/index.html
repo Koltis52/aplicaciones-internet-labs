@@ -30,6 +30,7 @@
                         <td>{{ asignatura.nombre }}</td>
                         <td>{{ asignatura.codigo }}</td>
                         <td>{{ asignatura.alumnos.count }}</td>
+                        <td><button value={{asignatura.nombre}} id="modificar_asignatura">Modificar Asignatura</button></td>
                         <td><button value={{asignatura.nombre}} onclick="eliminar_asignatura(this.value)">Eliminar Asignatura</button></td>
                     </tr>
                     {% endfor %}
@@ -38,6 +39,13 @@
     </div>
     <script>
         var csrfToken = '{{ csrf_token }}';
+
+        const button = document.getElementById('modificar_asignatura');
+
+        button.addEventListener('click', () => {
+            const url = 'Http://localhost:8080/modificar asignatura/';
+            window.location.href = `${url}${button.value}`;
+        })
 
         function eliminar_asignatura(nombre_asignatura) {
             var xhr = new XMLHttpRequest();
