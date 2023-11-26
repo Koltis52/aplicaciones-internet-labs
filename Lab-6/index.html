@@ -19,11 +19,11 @@
 </form>
 <table class="table table-striped">
 <thead>
-<tr><th>#</th><th>Ejemplo</th><th>Description</th><th></th> </tr> </thead>
+<tr><th>#</th><th>Titulo</th><th>Description</th><th></th> </tr> </thead>
 <tbody>
-<tr ng-model="mostrarPeliculas" ng-repeat="peliculas in peliculas" ng-init="current = $parent.start; $parent.start=$parent.start;">
-<td>{{current + $index + 1}}</td><td>{{peliculas.title}}</td><td>{{peliculas.description}}</td>
-<td><a href="#!Movie/1">Movie details</a></td>
+<tr ng-model="mostrarPeliculas" ng-repeat="peliculas in peliculas">
+<td>{{$index + 1}}</td><td>{{peliculas.title}}</td><td>{{peliculas.description}}</td><td><img src={{peliculas.poster.url}} width="200" height="200"></td>
+<td><a href="#!Movie/{{$index + 1}}">Movie details</a></td>
 </tr>
 </tbody>
 </table>
