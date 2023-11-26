@@ -23,7 +23,7 @@
 <tbody>
 <tr ng-model="mostrarPeliculas" ng-repeat="peliculas in peliculas">
 <td>{{$index + 1}}</td><td>{{peliculas.title}}</td><td>{{peliculas.description}}</td><td><img src={{peliculas.poster.url}} width="200" height="200"></td>
-<td><a href="#!Movie/{{$index + 1}}">Movie details</a></td>
+<td><a href="#!Movie/{{peliculas._id}}">Movie details</a></td>
 </tr>
 </tbody>
 </table>
@@ -40,7 +40,7 @@ sampleApp.config(function($routeProvider) {
 });
 
 sampleApp.controller('AngularController',function($scope,$routeParams) {
-    $scope.movieid=$routeParams.MovieId
+    $scope.movieid=$routeParams.movieId
 });
 
 sampleApp.controller('myCtrl', function($scope, $http) {
