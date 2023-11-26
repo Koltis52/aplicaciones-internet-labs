@@ -14,15 +14,15 @@
 
 <h1> Movies</h1>
 <form action="">
-    <select name="genres" id="genres" ng-model="selectGeneros" ng-options="generos.name for generos in generos" ng-change="obtenerPeliculas()">
+    <select name="genres" id="genres" ng-model="selectGeneros" ng-options="generos.name for generos in generos track by generos.slug" ng-change="obtenerPeliculas()">
     </select>
 </form>
 <table class="table table-striped">
 <thead>
-<tr> <th>#</th><th>Ejemplo</th><th>Description</th><th></th> </tr> </thead>
-<tbody ng-model="mostrarPeliculas" ng-options="peliculas for peliculas in peliculas">
-<tr>
-<td>l</td><td>l</td><td>Movie 1</td>
+<tr><th>#</th><th>Ejemplo</th><th>Description</th><th></th> </tr> </thead>
+<tbody>
+<tr ng-model="mostrarPeliculas" ng-repeat="peliculas in peliculas" ng-init="current = $parent.start; $parent.start=$parent.start;">
+<td>{{current + $index + 1}}</td><td>{{peliculas.title}}</td><td>{{peliculas.description}}</td>
 <td><a href="#!Movie/1">Movie details</a></td>
 </tr>
 </tbody>
@@ -54,7 +54,7 @@ sampleApp.controller('myCtrl', function($scope, $http) {
     });
 
     $scope.obtenerPeliculas = function() {
-        $scope.opcion = $scope.selectGeneros;
+        $scope.opcion = $scope.selectGeneros.slug;
         $http({
             method: 'GET',
             url: 'http://api.filmon.com/api/vod/search?genre=' + $scope.opcion
