@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MovieService } from '../movie.service';
+import { SharedService } from '../shared.service';
 
 @Component({
   selector: 'app-genre-selector',
@@ -7,9 +8,9 @@ import { MovieService } from '../movie.service';
   styleUrls: ['./genre-selector.component.css']
 })
 export class GenreSelectorComponent implements OnInit {
-  genres: any[] = []; 
+  genres: any[] = [];
 
-  constructor(private movieService: MovieService) { }
+  constructor(private movieService: MovieService, private sharedService: SharedService) { }
 
   ngOnInit(): void {
     this.movieService.getGenres().subscribe(genres => {
@@ -18,9 +19,9 @@ export class GenreSelectorComponent implements OnInit {
   }
 
   onGenreSelected(event: Event): void {
-    const selectedGenre = (event.target as HTMLSelectElement)?.value;
-    if (selectedGenre) {
-      this.movieService.getMoviesByGenre(selectedGenre);
+    const selectedGenreSlug = (event.target as HTMLSelectElement)?.value;
+    if (selectedGenreSlug) {
+      this.sharedService.updateSelectedGenre(selectedGenreSlug);
     }
   }
 }

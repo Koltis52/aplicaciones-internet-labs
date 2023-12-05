@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MovieService } from '../movie.service';
+import { SharedService } from '../shared.service';
 
 @Component({
   selector: 'app-movie-list',
@@ -7,15 +8,17 @@ import { MovieService } from '../movie.service';
   styleUrls: ['./movie-list.component.css']
 })
 export class MovieListComponent implements OnInit {
-  movies: any[] = []; // Adjust the type based on your actual JSON structure
+  movies: any[] = []; 
 
-  constructor(private movieService: MovieService) { }
+  constructor(private movieService: MovieService, private sharedService: SharedService) { }
 
   ngOnInit(): void {
-    // Fetch movie data and handle it here
-    // For example, let's assume you want to display movies for the "Action" genre initially
-    this.movieService.getMoviesByGenre('action').subscribe(movies => {
-      this.movies = movies;
+    this.sharedService.selectedGenreSlug$.subscribe(selectedGenreSlug => {
+      if (selectedGenreSlug) {
+        this.movieService.getMoviesByGenre(selectedGenreSlug).subscribe(movies => {
+          this.movies = movies;
+        });
+      }
     });
   }
 }
