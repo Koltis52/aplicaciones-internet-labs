@@ -1,0 +1,7 @@
+<div>
+    <label for="genre">Select Genre:</label>
+    <select id="genre" (change)="onGenreSelected($event)">
+      <option *ngFor="let genre of genres" [value]="genre.name">{{ genre.name }}</option>
+    </select>
+  </div>
+  
