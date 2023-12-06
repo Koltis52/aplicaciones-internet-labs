@@ -19,7 +19,6 @@ interface Movie {
   _id: string;
   genres: string[];
   keywords: string[];
-  // Add other properties based on your actual JSON structure
 }
 
 @Injectable({
